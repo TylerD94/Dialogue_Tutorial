@@ -230,6 +230,9 @@ namespace Editor
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
 
             var canvas = GUILayoutUtility.GetRect(CanvasSize, CanvasSize);
+            var backgroundTexture = Resources.Load("background") as Texture2D;
+            var texCoords = new Rect(0, 0, CanvasSize / BackgroundSize, CanvasSize / BackgroundSize);
+            GUI.DrawTextureWithTexCoords(canvas, backgroundTexture, texCoords);
 
             foreach (var node in _selectedDialogue.GetAllNodes())
             {
