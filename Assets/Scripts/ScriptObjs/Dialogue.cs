@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Dialogue;
 using UnityEngine;
 
@@ -8,7 +9,6 @@ namespace ScriptObjs
     [CreateAssetMenu(fileName = "New Dialogue", menuName = "New Dialogue")]
     public class Dialogue : ScriptableObject
     {
-        public new string name;
         public List<DialogueNode> nodes = new();
         private Dictionary<string, DialogueNode> _nodeLookup = new();
 
@@ -23,6 +23,7 @@ namespace ScriptObjs
                 };
                 nodes.Add(rootNode);
             }
+
             OnValidate();
         } 
 #endif

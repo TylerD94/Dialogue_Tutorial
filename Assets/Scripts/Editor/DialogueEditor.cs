@@ -47,7 +47,7 @@ namespace Editor
         {
             _selectedDialogue = EditorUtility.InstanceIDToObject(instanceId) as ScriptObjs.Dialogue;
             if (_selectedDialogue == null) return false; 
-            
+
             ShowWindow();
             return true;
         }
@@ -217,7 +217,6 @@ namespace Editor
         {
             _selectedDialogue = Selection.activeObject as ScriptObjs.Dialogue;
             if (_selectedDialogue == null) return;
-            titleContent = new GUIContent(_selectedDialogue.name);
             Repaint();
         }
 
@@ -231,13 +230,6 @@ namespace Editor
             _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
 
             var canvas = GUILayoutUtility.GetRect(CanvasSize, CanvasSize);
-            
-            // This doesn't work right. I wonder if its a Mac bug. 
-            var backgroundTexture = Resources.Load("background") as Texture2D;
-            float tiles = CanvasSize / BackgroundSize;
-            Rect backgroundRepeat = new Rect(0, 0, tiles, tiles);
-            GUI.DrawTextureWithTexCoords(canvas, backgroundTexture, backgroundRepeat);
-
 
             foreach (var node in _selectedDialogue.GetAllNodes())
             {

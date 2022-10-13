@@ -18,9 +18,7 @@ namespace Editor
             var newDialogue = CreateInstance<ScriptObjs.Dialogue>();
             _filename = EditorGUILayout.TextField(_filename);
 
-            var create = GUILayout.Button("Create file");
-            
-            if (create)
+            if (GUILayout.Button("Create file"))
             {
                 newDialogue.name = _filename;
                 AssetDatabase.CreateAsset(newDialogue, $"Assets/Dialogue/{newDialogue.name}.asset");
